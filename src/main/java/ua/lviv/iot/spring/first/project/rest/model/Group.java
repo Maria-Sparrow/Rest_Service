@@ -1,19 +1,14 @@
 package ua.lviv.iot.spring.first.project.rest.model;
 
-import java.util.Set;
-
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Entity
-public class Group {
+import javax.persistence.*;
+import java.util.Set;
 
+@Entity
+@Table(name = "\"group\"")
+public class Group {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;
@@ -25,38 +20,30 @@ public class Group {
   @OneToMany(mappedBy = "group", fetch = FetchType.EAGER)
   @JsonIgnoreProperties("group")
   private Set<Student> students;
-
   public Group() {
+    super();
   }
-
   public Integer getId() {
     return id;
   }
-
   public void setId(Integer id) {
     this.id = id;
   }
-
   public String getName() {
     return name;
   }
-
   public void setName(String name) {
     this.name = name;
   }
-
   public Integer getEnrollmentYear() {
     return enrollmentYear;
   }
-
   public void setEnrollmentYear(Integer enrollmentYear) {
     this.enrollmentYear = enrollmentYear;
   }
-
   public Set<Student> getStudents() {
     return students;
   }
-
   public void setStudents(Set<Student> students) {
     this.students = students;
   }

@@ -17,8 +17,15 @@ public class StudentService {
     return studentRepository.save(student);
   }
 
-  public List<Student> findAll() {
-    return studentRepository.findAll();
+  public Student getStudent(Integer studentId) {
+    return studentRepository.findById(studentId).get();
   }
 
+    public List<Student> getAllStudents() {
+      return studentRepository.findAll();
+    }
+
+  public List<Student> getAllByFirstName(String firstName) {
+    return studentRepository.findAllByFirstName(firstName);
+  }
 }
